@@ -9,4 +9,4 @@
 * Baekjoon (17281) 스타트와 링크_permutation<br>
 
 ## [2021.03.19]
-* Baekjoon (7576) _BFS<br>
+* Baekjoon (7576) 토마토_BFS<br>
