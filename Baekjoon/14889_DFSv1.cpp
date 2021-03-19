@@ -23,7 +23,7 @@ int main(void)
 			cin >> arr[i][j];
 		}
 	}
-
+ 
 	DFS(0, 0, 0);
 
 	cout << res << endl;
