@@ -5,7 +5,7 @@
 using namespace std;
 
 void calc();
-void DFS(int cnt);
+void DFS(int cnt, int index);
 
 int n, res = 999;
 int arr[22][22];
@@ -24,12 +24,12 @@ int main(void)
 		}
 	}
 
-	DFS(0);
+	DFS(0, 0);
 
 	cout << res << endl;
 }
 
-void DFS(int cnt)
+void DFS(int cnt, int index)
 {
 	if (cnt == n / 2)
 	{
@@ -37,12 +37,12 @@ void DFS(int cnt)
 		return;
 	}
 
-	for (int i = 0; i < n; i++)
+	for (int i = index; i < n; i++)
 	{
 		if (order[i] == 1)
 			continue;
 		order[i] = 1;
-		DFS(cnt + 1);
+		DFS(cnt + 1, i);
 		order[i] = 0;
 		
 	}
@@ -77,6 +77,6 @@ void calc()
 	}
 	diff = abs(start_sum - link_sum);
 
-	if (res < diff)
+	if (res > diff)
 		res = diff;
 }
