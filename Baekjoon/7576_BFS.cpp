@@ -6,7 +6,7 @@ using namespace std;
 
 void BFS();
 
-int n, m, cnt, ans, checked;
+int n, m, ans;
 int arr[1002][1002];
 int check[1002][1002];
 queue<pair<int, int>> q;
