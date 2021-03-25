@@ -18,3 +18,4 @@
 ## [2021.03.25]
 * Baekjoon (2606) 바이러스_DFS<br>
 * Baekjoon (2606) 바이러스_BFS<br>
+* Baekjoon (2206) 벽 부수고 이동하기_BFS<br>
