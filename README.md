@@ -22,4 +22,5 @@
 
 ## [2021.03.26]
 * Baekjoon (10816) 숫자 카드 2<br>
-* Baekjoon (2636) 치즈<br>
+* Baekjoon (2636) 치즈_BFS<br>
+* Baekjoon (2636) 치즈_DFS<br>
