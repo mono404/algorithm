@@ -26,4 +26,4 @@
 * Baekjoon (2636) 치즈_DFS<br>
 
 ## [2021.03.27]
-* Baekjoon (10816) 정수 삼각형<br>
+* Baekjoon (1932) 정수 삼각형<br>
