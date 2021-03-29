@@ -24,3 +24,6 @@
 * Baekjoon (10816) 숫자 카드 2<br>
 * Baekjoon (2636) 치즈_BFS<br>
 * Baekjoon (2636) 치즈_DFS<br>
+
+## [2021.03.27]
+* Baekjoon (10816) 정수 삼각형<br>
