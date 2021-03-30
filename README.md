@@ -32,5 +32,6 @@
 ## [2021.03.30]
 * Baekjoon (2579) 계단 <br>
 * Baekjoon (2156) 포도주  <br>
-* Baekjoon (3425)   <br>
+* Baekjoon (3425) 고스택<br>
+* Baekjoon (1463) 1로 만들기<br>
 
