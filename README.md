@@ -47,4 +47,6 @@
 
 ## [2021.04.05]
 * Baekjoon (1300) K번째  <br>
-* Baekjoon (11052)  <br>
+* Baekjoon (11052) 카드 구매하기 <br>
+* Baekjoon (20500) Ezreal 여눈부터 가네 ㅈㅈ <br>
+* 
