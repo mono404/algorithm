@@ -46,24 +46,13 @@ void DFS(int y, int x, int s)
 	}
 	else if (s == 2)
 	{
-		ny = y + dy[0];
-		nx = x + dx[0];
-
-		if (arr[ny][nx] == 0)
+		for (int i = 0; i < 2; i++)
 		{
-			visit[ny][nx] = 1;
-			DFS(ny, nx, 0);
-			visit[ny][nx] = 0;
-		}
+			ny = y + dy[i];
+			nx = x + dx[i];
 
-		ny = y + dy[1];
-		nx = x + dx[1];
-
-		if (arr[ny][nx] == 0)
-		{
-			visit[ny][nx] = 1;
-			DFS(ny, nx, 1);
-			visit[ny][nx] = 0;
+			if (arr[ny][nx] == 0)
+				DFS(ny, nx, i);
 		}
 	}
 
