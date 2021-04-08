@@ -36,13 +36,13 @@
 * Baekjoon (1463) 1로 만들기<br>
 
 
-## [2021.03.30]
+## [2021.03.31]
 * Baekjoon (2178) 미로 탐색 <br>
 * Baekjoon (9251) LCS <br>
 * Baekjoon (1904) 01타일 <br>
 * Baekjoon (11726) 2xN  <br>
 
-## [2021.03.30]
+## [2021.04.01]
 * Baekjoon (10844) 쉬운 계단 <br>
 
 ## [2021.04.05]
@@ -57,4 +57,6 @@
 * Baekjoon (14503) 로봇 청소기 <br>
 
 ## [2021.04.08]
-* Baekjoon (17070) 파이프 옮기기 1 <br>
+* Baekjoon (17070) 파이프 옮기기 1_DFS <br>
+* Baekjoon (17070) 파이프 옮기기 1_BFS <br>
+* Baekjoon (1043) 거짓말 <br>
