@@ -7,46 +7,46 @@ int arr[520][520];
 
 void check(int y, int x)
 {
-	// 1¹ø
+	// 1ë²ˆ
 	sum = max(sum, arr[y][x] + arr[y][x + 1] + arr[y][x + 2] + arr[y][x + 3]);
 	sum = max(sum, arr[y][x] + arr[y + 1][x] + arr[y + 2][x] + arr[y + 3][x]);
 
-	// 2¹ø
+	// 2ë²ˆ
 	sum = max(sum, arr[y][x] + arr[y][x + 1] + arr[y + 1][x] + arr[y + 1][x + 1]);
 	sum = max(sum, arr[y][x - 1] + arr[y][x] + arr[y + 1][x - 1] + arr[y + 1][x]);
 
-	// 3¹ø
+	// 3ë²ˆ
 	sum = max(sum, arr[y][x] + arr[y + 1][x] + arr[y + 2][x] + arr[y + 2][x + 1]);
 	sum = max(sum, arr[y][x - 2] + arr[y][x - 1] + arr[y][x] + arr[y + 1][x - 2]);
 	sum = max(sum, arr[y - 2][x - 1] + arr[y - 2][x] + arr[y - 1][x] + arr[y][x]);
 	sum = max(sum, arr[y - 1][x + 2] + arr[y][x] + arr[y][x + 1] + arr[y][x + 2]);
 
-	//3¹ø ´ëÄª
+	//3ë²ˆ ëŒ€ì¹­
 	sum = max(sum, arr[y][x] + arr[y][x + 1] + arr[y + 1][x] + arr[y + 2][x]);
 	sum = max(sum, arr[y][x - 2] + arr[y][x - 1] + arr[y][x] + arr[y + 1][x]);
 	sum = max(sum, arr[y - 2][x] + arr[y - 1][x] + arr[y][x - 1] + arr[y][x]);
 	sum = max(sum, arr[y][x] + arr[y + 1][x] + arr[y + 1][x + 1] + arr[y + 1][x + 2]);
 
-	// 4¹ø
+	// 4ë²ˆ
 	sum = max(sum, arr[y][x] + arr[y + 1][x] + arr[y + 1][x + 1] + arr[y + 2][x + 1]);
 	sum = max(sum, arr[y][x - 1] + arr[y][x] + arr[y + 1][x - 2] + arr[y + 1][x - 1]);
 	sum = max(sum, arr[y - 2][x - 1] + arr[y - 1][x - 1] + arr[y - 1][x] + arr[y][x]);
 	sum = max(sum, arr[y - 1][x + 1] + arr[y - 1][x + 2] + arr[y][x] + arr[y][x + 1]);
 
-	//4¹ø ´ëÄª
+	//4ë²ˆ ëŒ€ì¹­
 	sum = max(sum, arr[y][x] + arr[y + 1][x - 1] + arr[y + 1][x] + arr[y + 2][x - 1]);
 	sum = max(sum, arr[y - 1][x - 2] + arr[y - 1][x - 1] + arr[y][x - 1] + arr[y][x]);
 	sum = max(sum, arr[y - 2][x + 1] + arr[y - 1][x] + arr[y - 1][x + 1] + arr[y][x]);
 	sum = max(sum, arr[y][x] + arr[y][x + 1] + arr[y + 1][x + 1] + arr[y + 1][x + 2]);
 
 
-	// 5¹ø
+	// 5ë²ˆ
 	sum = max(sum, arr[y][x] + arr[y + 1][x] + arr[y + 1][x + 1] + arr[y + 2][x]);
 	sum = max(sum, arr[y][x - 2] + arr[y][x - 1] + arr[y][x] + arr[y + 1][x - 1]);
 	sum = max(sum, arr[y - 2][x] + arr[y - 1][x - 1] + arr[y - 1][x] + arr[y][x]);
 	sum = max(sum, arr[y - 1][x + 1] + arr[y][x] + arr[y][x + 1] + arr[y][x + 2]);
 
-	//5¹ø ´ëÄª
+	//5ë²ˆ ëŒ€ì¹­
 	sum = max(sum, arr[y][x] + arr[y + 1][x - 1] + arr[y + 1][x] + arr[y + 2][x]);
 	sum = max(sum, arr[y - 1][x - 1] + arr[y][x - 2] + arr[y][x - 1] + arr[y][x]);
 	sum = max(sum, arr[y - 2][x] + arr[y - 1][x] + arr[y - 1][x + 1] + arr[y][x]);
