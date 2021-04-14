@@ -74,3 +74,5 @@
 * Baekjoon (15686) 치킨 배달_BFS <br>
 * Baekjoon (15686) 치킨 배달_BF <br>
 * Baekjoon (14499) 주사위 굴리기 <br>
+* Baekjoon (14502) 연구소 <br>
+
