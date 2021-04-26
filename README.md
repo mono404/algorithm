@@ -78,12 +78,12 @@
 
 ## [2021.04.15]
 * Baekjoon (14891) 톱니 바퀴 <br>
-* Programmers 문자열 압축 <br>
+* Programmers Lv.2 문자열 압축 <br>
 
 
 ## [2021.04.16]
-* Programmers 괄호 변환 <br>
-* Programmers 다음 큰 숫자 <br>
+* Programmers Lv.2 괄호 변환 <br>
+* Programmers Lv.2 다음 큰 숫자 <br>
 * Baekjoon (16234) 인구 이동 <br>
 * Baekjoon (15683) 감시 <br>
 
@@ -119,7 +119,8 @@
 
 ## [2021.04.26]
 * Baekjoon (1120) 문자열 <br>
-* Programmers 징검다리 건너기 <br>
+* Programmers Lv.3 징검다리 건너기 <br>
 * Baekjoon (1620) 나는야 포켓몬 마스터 이다솜 <br>
 * Baekjoon (5430) AC <br>
-* Programmers 비밀지도 <br>
+* Programmers Lv.1 비밀지도 <br>
+* Programmers Lv.2 오픈 채팅 방 <br>
