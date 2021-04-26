@@ -119,6 +119,7 @@
 
 ## [2021.04.26]
 * Baekjoon (1120) 문자열 <br>
-* Programmers 징검다리  <br>
+* Programmers 징검다리 건너기 <br>
 * Baekjoon (1620) 나는야 포켓몬 마스터 이다솜 <br>
 * Baekjoon (5430) AC <br>
+* Programmers 비밀지도 <br>
