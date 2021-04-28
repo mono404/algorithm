@@ -135,4 +135,5 @@
 
 ## [2021.04.28]
 * Baekjoon (14426) 접두사 찾기 <br>
-* Baekjoon (14425) 문자열 집합  <br>
+* Baekjoon (14425) 문자열 집합_String  <br>
+* Baekjoon (14425) 문자열 집합_Set  <br>
