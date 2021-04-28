@@ -134,4 +134,5 @@
 * Programmers Lv.2 메뉴 리뉴얼 <br>
 
 ## [2021.04.28]
-* Baekjoon (14426) 접두사  <br>
+* Baekjoon (14426) 접두사 찾기 <br>
+* Baekjoon (14425) 문자열 집합  <br>
