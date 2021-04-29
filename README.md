@@ -137,7 +137,7 @@
 * Baekjoon (14426) 접두사 찾기 <br>
 * Baekjoon (14425) 문자열 집합_String  <br>
 * Baekjoon (14425) 문자열 집합_Set  <br>
-* Baekjoon (14425) 부분 문자열  <br>
+* Baekjoon (16916) 부분 문자열  <br>
 * Programmers Lv.1 크레인 인형뽑기 게임 <br>
 * Programmers Lv.2 튜플 <br>
 * Baekjoon (4358) 생태학 <br>
