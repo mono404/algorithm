@@ -125,7 +125,7 @@ vector<vector<int>> solution(int n, vector<vector<int>> build_frame) {
                 answer.push_back({ j, i, b_arr[i][j] - 1 });
         }
     }
-
+ 
     return answer;
 }
 
