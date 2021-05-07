@@ -4,21 +4,21 @@
 
 using namespace std;
 
-int dy[] = { 0, 1, 1, 1, 0, -1, -1, -1 };
-int dx[] = { 1, 1, 0, -1, -1, -1, 0, 1 };
+int dy[] = { 0, 0, 1, 1, 1, 0, -1, -1, -1 };
+int dx[] = { 0, 1, 1, 0, -1, -1, -1, 0, 1 };
 
 int b_arr[101][101];
 int p_arr[101][101];
 
-bool check(int x, int y, int a, int b)
+bool build(int x, int y, int a, int b)
 {
-    if (a == 0 && b == 0) // ±âµÕ »èÁ¦
+    if (a == 0 && b == 0) // ê¸°ë‘¥ ì‚­ì œ
     {
         int p_tmp = p_arr[y][x];
 
         p_arr[y][x] = 0;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 9; i++)
         {
             int ny = y + dy[i];
             int nx = x + dx[i];
@@ -27,7 +27,7 @@ bool check(int x, int y, int a, int b)
             {
                 if (b_arr[ny][nx] != 0)
                 {
-                    if (check(nx, ny, b_arr[ny][nx] - 1, 1) == false)
+                    if (build(nx, ny, b_arr[ny][nx] - 1, 1) == false)
                     {
                         p_arr[y][x] = p_tmp;
                         return false;
@@ -36,7 +36,7 @@ bool check(int x, int y, int a, int b)
 
                 if (p_arr[ny][nx] != 0)
                 {
-                    if (check(nx, ny, p_arr[ny][nx] - 1, 1) == false)
+                    if (build(nx, ny, p_arr[ny][nx] - 1, 1) == false)
                     {
                         p_arr[y][x] = p_tmp;
                         return false;
@@ -46,20 +46,25 @@ bool check(int x, int y, int a, int b)
         }
         return true;
     }
-    else if (a == 0 && b == 1) // ±âµÕ ¼³Ä¡
+    else if (a == 0 && b == 1) // ê¸°ë‘¥ ì„¤ì¹˜
     {
-        if (y == 0 || b_arr[y][x - 1] == 2 || p_arr[y - 1][x] == 1)
+        if (y == 0 || b_arr[y][x - 1] == 2 || b_arr[y][x] == 2 || p_arr[y - 1][x] == 1)
+        {
+            p_arr[y][x] = a + 1;
             return true;
+        }
         else
+        {
             return false;
+        }
     }
-    else if (a == 1 && b == 0) // º¸ »èÁ¦
+    else if (a == 1 && b == 0) // ë³´ ì‚­ì œ
     {
         int b_tmp = b_arr[y][x];
 
         b_arr[y][x] = 0;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 9; i++)
         {
             int ny = y + dy[i];
             int nx = x + dx[i];
@@ -68,7 +73,7 @@ bool check(int x, int y, int a, int b)
             {
                 if (b_arr[ny][nx] != 0)
                 {
-                    if (check(nx, ny, b_arr[ny][nx] - 1, 1) == false)
+                    if (build(nx, ny, b_arr[ny][nx] - 1, 1) == false)
                     {
                         b_arr[y][x] = b_tmp;
                         return false;
@@ -77,7 +82,7 @@ bool check(int x, int y, int a, int b)
 
                 if (p_arr[ny][nx] != 0)
                 {
-                    if (check(nx, ny, p_arr[ny][nx] - 1, 1) == false)
+                    if (build(nx, ny, p_arr[ny][nx] - 1, 1) == false)
                     {
                         b_arr[y][x] = b_tmp;
                         return false;
@@ -87,30 +92,16 @@ bool check(int x, int y, int a, int b)
         }
         return true;
     }
-    else if (a == 1 && b == 1) // º¸ ¼³Ä¡
+    else if (a == 1 && b == 1) // ë³´ ì„¤ì¹˜
     {
         if (p_arr[y - 1][x] == 1 || p_arr[y - 1][x + 1] == 1 || (b_arr[y][x - 1] == 2 && b_arr[y][x + 1] == 2))
+        {
+            b_arr[y][x] = a + 1;
             return true;
+        }
         else
+        {
             return false;
-    }
-}
-
-void build(int x, int y, int a, int b)
-{
-    if (check(x, y, a, b) == true)
-    {
-        if (b == 0)
-        {
-            
-        }
-        else if(a == 0)
-        {
-            p_arr[y][x] += a + 1;
-        }
-        else if (a == 1)
-        {
-            b_arr[y][x] += a + 1;
         }
     }
 }
@@ -141,8 +132,6 @@ vector<vector<int>> solution(int n, vector<vector<int>> build_frame) {
 int main(void)
 {
     vector<vector<int>> ans;    
-    ans = solution(5, { {2, 1, 0, 1} });
-    //ans = solution(5, { {1, 0, 0, 1}, {2, 0, 0, 1}, {1, 1, 1, 1}, {1, 1, 0, 1}, {2, 1, 0, 1}, {1, 2, 1, 1}, {1, 1, 0, 0}, {2, 1, 0, 0} });
     ans = solution(5, { {1, 0, 0, 1}, {1, 1, 1, 1}, {2, 1, 0, 1}, {2, 2, 1, 1}, {5, 0, 0, 1}, {5, 1, 0, 1}, {4, 2, 1, 1}, {3, 2, 1, 1} });
     ans = solution(5, { {0, 0, 0, 1}, {2, 0, 0, 1}, {4, 0, 0, 1}, {0, 1, 1, 1}, {1, 1, 1, 1}, {2, 1, 1, 1}, {3, 1, 1, 1}, {2, 0, 0, 0}, {1, 1, 1, 0}, {2, 2, 0, 1} });
 }
