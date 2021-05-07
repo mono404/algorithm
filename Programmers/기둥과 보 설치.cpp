@@ -25,22 +25,11 @@ bool build(int x, int y, int a, int b)
 
             if (ny >= 0 && nx >= 0)
             {
-                if (b_arr[ny][nx] != 0)
+                if ((b_arr[ny][nx] != 0 && build(nx, ny, b_arr[ny][nx] - 1, 1) == false) ||
+                    (p_arr[ny][nx] != 0 && build(nx, ny, p_arr[ny][nx] - 1, 1) == false))
                 {
-                    if (build(nx, ny, b_arr[ny][nx] - 1, 1) == false)
-                    {
-                        p_arr[y][x] = p_tmp;
-                        return false;
-                    }
-                }
-
-                if (p_arr[ny][nx] != 0)
-                {
-                    if (build(nx, ny, p_arr[ny][nx] - 1, 1) == false)
-                    {
-                        p_arr[y][x] = p_tmp;
-                        return false;
-                    }
+                    p_arr[y][x] = p_tmp;
+                    return false;
                 }
             }
         }
@@ -71,22 +60,11 @@ bool build(int x, int y, int a, int b)
 
             if (ny >= 0 && nx >= 0)
             {
-                if (b_arr[ny][nx] != 0)
+                if ((b_arr[ny][nx] != 0 && build(nx, ny, b_arr[ny][nx] - 1, 1) == false) ||
+                    (p_arr[ny][nx] != 0 && build(nx, ny, p_arr[ny][nx] - 1, 1) == false))
                 {
-                    if (build(nx, ny, b_arr[ny][nx] - 1, 1) == false)
-                    {
-                        b_arr[y][x] = b_tmp;
-                        return false;
-                    }
-                }
-
-                if (p_arr[ny][nx] != 0)
-                {
-                    if (build(nx, ny, p_arr[ny][nx] - 1, 1) == false)
-                    {
-                        b_arr[y][x] = b_tmp;
-                        return false;
-                    }
+                    b_arr[y][x] = b_tmp;
+                    return false;
                 }
             }
         }
@@ -125,7 +103,7 @@ vector<vector<int>> solution(int n, vector<vector<int>> build_frame) {
                 answer.push_back({ j, i, b_arr[i][j] - 1 });
         }
     }
- 
+
     return answer;
 }
 
