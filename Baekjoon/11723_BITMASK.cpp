@@ -25,19 +25,13 @@ int main(void)
 			cin >> val;
 
 			bits |= 1 << val;
-
-			cout << bitset<21>(bits) << "\n";
 		}
 		else if (oper.compare(0, 6, "remove") == 0)
 		{
 			int val;
 			cin >> val;
 
-			int a = 0;
-			int b = 0;
-
 			bits &= ~(1 << val);
-			cout << bitset<21>(bits) << "\n";
 		}
 		else if (oper.compare(0, 5, "check") == 0)
 		{
@@ -58,24 +52,18 @@ int main(void)
 				bits &= ~(1 << val);
 			else
 				bits |= (1 << val);
-
-			cout << bitset<21>(bits) << "\n";
 		}
 		else if (oper.compare(0, 3, "all") == 0)
 		{
 			int val = 0;
 
 			bits |= ~val;
-
-			cout << bitset<21>(bits) << "\n";
 		}
 		else if (oper.compare(0, 5, "empty") == 0)
 		{
 			int val = 0;
 
 			bits &= val;
-
-			cout << bitset<21>(bits) << "\n";
 		}
 	}
 }
