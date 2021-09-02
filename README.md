@@ -202,4 +202,7 @@ Programmers Lv.3 표 편집
 Programmers Lv.2 거리두기 확인하기
 
 ## [2021.09.01]
-Programmers Lv.2 기능 
+Programmers Lv.2 기능 개발
+
+## [2021.09.01]
+Programmers Lv.2 단체사진찍기
