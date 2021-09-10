@@ -220,7 +220,7 @@ Programmers Lv.3 가장 먼 노드
 Programmers Lv.3 합승 택시 요금
 
 ## [2021.09.08]
-Programmers Lv.1 신규 아이디 추천
+Programmers Lv.1 신규 아이디 추천 
 Programmers Lv.1 숫자 문자열과 영단어
 
 ## [2021.09.09]
