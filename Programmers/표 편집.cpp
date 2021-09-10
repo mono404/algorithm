@@ -5,289 +5,212 @@
 
 using namespace std;
 
-class Node
-{
-    int num;
-    bool isRemove = false;
-    Node* prev;
-    Node* next;
-    friend class List;
+class Node {
+	int value;
+	bool isRemoved = false;
+	Node* prev;
+	Node* next;
+	friend class List;
 };
 
-class List
-{
+class List {
 private:
-    int size = 0;
-    Node* head;
-    Node* tail;
-    Node* cursur;
-    stack<Node*> trash;
+	int size = 0;
+	Node* head;
+	Node* tail;
+	Node* cursur;
+	stack<Node*> trash;
 public:
-    List(int n, int k);
-    ~List();
-    bool isEmpty();
-    void add_front(const int& num);
-    void add_back(const int &num);
-    void remove_front();
-    void remove_back();
+	List(const int& n, const int& k);
+	~List();
+	bool isEmpty();
+	void addFront(const int& value);
+	void addBack(const int& value);
+	void removeFront();
+	void removeBack();
 
-    void recover();
-    void down_cursur(int n);
-    void up_cursur(int n);
-
-    string result();
-
-    void erase_cursur();
-
-    void print();
-    void check_cursur();
+	void moveCursur(const char& c, const int& n);
+	void removeCursur();
+	void undo();
+	string makeAnswer(const int& n);
 protected:
-    void add(Node* v, const int& num);
-    void remove(Node* v);
-
+	void add(Node* v, const int& value);
+	void remove(Node* v);
 };
 
-List::List(int n, int k)
+string solution(int n, int k, vector<string> cmd) {
+	string answer = "";
+
+	List* list = new List(n, k);
+
+	for (int i = 0; i < cmd.size(); i++)
+	{
+		if (cmd[i][0] == 'D' || cmd[i][0] == 'U')
+			list->moveCursur(cmd[i][0], stoi(cmd[i].substr(2)));
+		else if (cmd[i][0] == 'C')
+			list->removeCursur();
+		else if (cmd[i][0] == 'Z')
+			list->undo();
+	}
+
+	answer = list->makeAnswer(n);
+
+	return answer;
+}
+
+//int main(void)
+//{
+//	cout << solution(8, 2, { "D 2","C","U 3","C","D 4","C","U 2","Z","Z" }) << endl;
+//	cout << solution(8, 2, { "D 2","C","U 3","C","D 4","C","U 2","Z","Z","U 1","C" }) << endl;
+//	cout << solution(8, 7, { "C","Z","C","Z","C","Z","C","Z","C","Z","C", }) << "\n";
+//}
+
+List::List(const int& n, const int& k)
 {
-    head = new Node;
-    head->num = -1;
-    tail = new Node;
-    tail->num = 9999999;
+	head = new Node();
+	tail = new Node();
+	cursur = new Node();
 
-    head->next = tail;
-    tail->prev = head;
+	head->next = tail;
+	tail->prev = head;
 
-    for (int i = 0; i < n; i++)
-        add_back(i);
+	for (int i = 0; i < n; i++)
+		addBack(i);
 
-    cursur = head->next;
-    down_cursur(k);
+	cursur = head;
+
+	for (int i = 0; i <= k; i++)
+		cursur = cursur->next;
 }
 
 List::~List()
 {
-    while (!isEmpty())
-        remove_front();
+	while (!isEmpty())
+		removeFront();
 
-    delete head;
-    delete tail;
+	delete head;
+	delete tail;
 }
 
-bool List::isEmpty() {
-    return (head->next == tail);
-}
-
-void List::add_front(const int& num)
+bool List::isEmpty()
 {
-    add(head, num);
+	if (head->next == tail)
+		return true;
+
+	return false;
 }
 
-void List::add_back(const int& num)
+void List::addFront(const int& value)
 {
-    add(tail->prev, num);
+	add(head, value);
 }
 
-void List::add(Node* v, const int& num)
+void List::addBack(const int& value)
 {
-    Node* u = new Node;
-    u->num = num;
-    u->next = v->next;
-    u->prev = v;
-
-    v->next->prev = u;
-    v->next = u;
+	add(tail->prev, value);
 }
 
-void List::remove_front()
+void List::removeFront()
 {
-    remove(head->next);
+	remove(head->next);
 }
 
-void List::remove_back()
+void List::removeBack()
 {
-    remove(tail->next);
+	remove(tail->prev);
+}
+
+void List::moveCursur(const char& c, const int& n)
+{
+	if (c == 'D')
+	{
+		for (int i = 0; i < n; i++)
+			cursur = cursur->next;
+	}
+	else
+	{
+		for (int i = 0; i < n; i++)
+			cursur = cursur->prev;
+	}
+}
+
+void List::removeCursur()
+{
+	cursur->isRemoved = true;
+	trash.push(cursur);
+
+	Node* v = cursur->prev;
+	Node* w = cursur->next;
+
+	v->next = w;
+	w->prev = v;
+
+	cursur = cursur->next;
+	if (cursur == tail)
+		cursur = cursur->prev;
+}
+
+void List::undo()
+{
+	Node* v = trash.top();
+	trash.pop();
+
+	Node* w = v->prev;
+
+	while (w->isRemoved != false)
+		w = w->prev;
+
+	Node* u = v->next;
+
+	while (u->isRemoved != false)
+		u = u->next;
+
+	w->next = v;
+	v->prev = w;
+
+	u->prev = v;
+	v->next = u;
+
+	v->isRemoved = false;
+}
+
+string List::makeAnswer(const int& n)
+{
+	string answer;
+
+	for (int i = 0; i < n; i++)
+		answer += 'X';
+
+	Node* v = head->next;
+
+	while (v != tail)
+	{
+		answer[v->value] = 'O';
+		v = v->next;
+	}
+
+	return answer;
+}
+
+void List::add(Node* v, const int& value)
+{
+	Node* w = new Node();
+
+	w->value = value;
+	w->prev = v;
+	w->next = v->next;
+
+	v->next->prev = w;
+	v->next = w;
 }
 
 void List::remove(Node* v)
 {
-    Node* u = v->prev;
-    Node* w = v->next;
+	Node* u = v->prev;
+	Node* w = v->next;
 
-    u->next = w;
-    w->prev = u;
+	u->next = w;
+	w->prev = u;
 
-    delete v;
+	delete v;
 }
-
-void List::recover()
-{
-    Node* v = trash.top();
-    Node* u = v->prev;
-    Node* w = v->next;
-    trash.pop();
-
-    while (u->isRemove != false)
-        u = u->prev;
-
-    u->next = v;
-    v->prev = u;
-
-    while (w->isRemove != false)
-        w = w->prev;
-
-    v->next = w;
-    w->prev = v;
-
-    v->isRemove = false;
-}
-
-void List::down_cursur(int n)
-{
-    for (int i = 0; i < n; i++)
-        cursur = cursur->next;
-}
-
-void List::up_cursur(int n)
-{
-    for (int i = 0; i < n; i++)
-        cursur = cursur->prev;
-}
-
-string List::result()
-{
-    Node* v = head->next;
-    string res;
-    res.resize(1000001, 'X');
-    int cnt = 0;
-
-    while (v->num != 9999999)
-    {
-        res[v->num] = 'O';
-        v = v->next;
-    }
-
-    return res;
-}
-
-void List::erase_cursur()
-{
-    Node* v = cursur->prev;
-    Node* w = cursur->next;
-
-    v->next = w;
-    w->prev = v;
-
-    trash.push(cursur);
-    cursur->isRemove = true;
-
-    if (w->num == 9999999)
-        cursur = v;
-    else
-        cursur = w;
-}
-
-void List::print()
-{
-    Node* v = head->next;
-    while (v->num != 9999999) {
-        //cout << v->num << " ";
-        cout << v->num << " : ";
-        switch (v->num)
-        {
-        case 0:
-            cout << "무지\n";
-            break;
-        case 1:
-            cout << "콘\n";
-            break;
-        case 2:
-            cout << "어피치\n";
-            break;
-        case 3:
-            cout << "제이지\n";
-            break;
-        case 4:
-            cout << "프로도\n";
-            break;
-        case 5:
-            cout << "네오\n";
-            break;
-        case 6:
-            cout << "튜브\n";
-            break;
-        case 7:
-            cout << "라이언\n";
-            break;
-        }
-        v = v->next;
-    }
-    cout << endl;
-}
-
-void List::check_cursur()
-{
-    cout << "currnt cursur position : ";
-    switch (cursur->num)
-        {
-        case 0:
-            cout << "무지\n";
-            break;
-        case 1:
-            cout << "콘\n";
-            break;
-        case 2:
-            cout << "어피치\n";
-            break;
-        case 3:
-            cout << "제이지\n";
-            break;
-        case 4:
-            cout << "프로도\n";
-            break;
-        case 5:
-            cout << "네오\n";
-            break;
-        case 6:
-            cout << "튜브\n";
-            break;
-        case 7:
-            cout << "라이언\n";
-            break;
-        }
-}
-
-string solution(int n, int k, vector<string> cmd) {
-    string answer = "";
-    stack<Node> s;
-    List* list = new List(n, k);
-    //list->print();
-    //list->check_cursur();
-    for (int i = 0; i < cmd.size(); i++)
-    {
-
-        if (cmd[i][0] == 'U')
-            list->up_cursur(stoi(cmd[i].substr(2)));
-        else if (cmd[i][0] == 'D')
-            list->down_cursur(stoi(cmd[i].substr(2)));
-        else if (cmd[i][0] == 'C')
-            list->erase_cursur();
-        else if (cmd[i][0] == 'Z')
-            list->recover();
-
-        //list->print();
-        //list->check_cursur();
-    }
-
-    answer = list->result().substr(0, n);
-
-    return answer;
-}
-
-int main(void)
-{
-    cout << solution(8, 2, { "D 2","C","U 3","C","D 4","C","U 2","Z","Z" }) << "\n";
-    cout << solution(8, 2, { "D 2","C","U 3","C","D 4","C","U 2","Z","Z","U 1","C" }) << "\n";
-    cout << solution(8, 7, { "C","Z","C","Z","C","Z","C","Z","C","Z","C",  }) << "\n";
-}
-
-
